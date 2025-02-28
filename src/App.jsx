@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "./App.css";
+import img1 from "./assets/puppy1.png";
+import img2 from "./assets/puppy2.png";
+import img3 from "./assets/puppy3.png";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      <h1 className="title">Cute Puppies</h1>
+      <Swiper
+        modules={[Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        className="swiper-container"
+      >
+        <SwiperSlide>
+          <img src={img1} alt="Cute puppy 1" className="slide-image" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img2} alt="Cute puppy 2" className="slide-image" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={img3} alt="Cute puppy 3" className="slide-image" />
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  );
 }
 
-export default App
+export default App;
